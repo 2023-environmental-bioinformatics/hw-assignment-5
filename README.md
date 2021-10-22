@@ -7,7 +7,10 @@ For this assignement you will going to use [Metabat2](https://peerj.com/articles
 
 Before using [Metabat2](https://bitbucket.org/berkeleylab/metabat/src/master/), you will have to map the reads back to the assembly using `bwa`. Sort the files using `samtools`.
 
-Use [CheckM](https://github.com/Ecogenomics/CheckM/wiki) to estimate the completeness and the contamination of the bins (*Hint: use the checkm lineage_wf workflow and export results as a table format )
+Use [CheckM](https://github.com/Ecogenomics/CheckM/wiki) to estimate the completeness and the contamination of the bins (*Hint: use the checkm lineage_wf workflow and export results as a table format).
+
+`envs/gtdbtk_class/etc/conda/activate.d/gtdbtk.sh`
+`/vortexfs1/omics/env-bio/collaboration/databases/release202`
 
 
 
