@@ -1,6 +1,7 @@
 # HW3 binning
 
 > For all runs use sbatch requesting 36 threads and 180gb of memory
+
 > For all software mentioned below, use conda to install
 
 
