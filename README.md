@@ -5,20 +5,27 @@
 
 For this assignement you will going to use [Metabat2](https://peerj.com/articles/7359/) to reconstruct genomes out of the metagenomes. First, you are going to co-assemble the three metagenomes you have used for your previous assignment, ERR598970, ERR598972 and ERR599021 using `megahit`. Make a directory called `scripts` on your repo and upload your sbatch script (*name the script `megahit.qsub`*).
 
-Before using [Metabat2](https://bitbucket.org/berkeleylab/metabat/src/master/), you will have to map the reads back to the assembly using `bwa`. Sort the files using `samtools`. Use Metabat2 to reconstruct bins (*Note: for the needs of this class, you are working with small metagenomes that produced a small assembly
-runMetaBat.sh -m 1500 --maxEdges 100 final.contigs.fa ERR598970.bam ERR598972.bam ERR599021.bam
+Before using [Metabat2](https://bitbucket.org/berkeleylab/metabat/src/master/), you will have to map the reads back to the assembly using `bwa`. Sort the files using `samtools`. Use Metabat2 to reconstruct bins (*Note: adjust the parameters "Minimum size of a contig for binning" to 1500 and the "maximum number of edges per node" to 100*). Upload the sbatch script that contains all the commands for mapping, sorting and binning on your `script` folder.
 
-Use [CheckM](https://github.com/Ecogenomics/CheckM/wiki) to estimate the completeness and the contamination of the bins (*Hint: use the checkm lineage_wf workflow and export results as a table format).
+Use [CheckM](https://github.com/Ecogenomics/CheckM/wiki) to estimate the completeness and the contamination of the bins (*Hint: use the checkm lineage_wf workflow and export results as a table format. Set ). Make a directory called `tables` on your repo and upload the table (*name the table `checkm_report.txt`*). Upload the sbatch script that contains all the commands for mapping, sorting and binning on your `script` folder.
+> How many genomes are considered high quality and how many medium quality according to XXX? For the rest of tasks you will only work with the medium and high quality bins (M/H Q).
 
-`envs/gtdbtk_class/etc/conda/activate.d/gtdbtk.sh`
-`/vortexfs1/omics/env-bio/collaboration/databases/release202`
+Use quast to calculate the assembly statistics of each bin, and to estimate the coverage of each bin in the metagenomes (ERR598970, ERR598972 and ERR599021). Upload the sbatch script (`quast.qsub`) and the quast report table `report.tsv` in the directories `scripts` and `tables`, respectively.  
+
+Use [GTDB-tk]() to assign taxonomy for the bins (*Note: during the installation of GTDB-tk, please do NOT download the GTDB. Modify the `gtdbtk.sh`file that is inside your gtdb environment `etc/conda/activate.d/` to modify the database path. Use `/vortexfs1/omics/env-bio/collaboration/databases/release202`*). Upload the summary tables on your `tables` directory.
+> How many bacterial and how many archaeal medium/high quality genomes did you recover? Which phylum was the most abundant?
+
+Use prokka () to functionally annotate the bins. 
+>
 
 
 
 
 
-> For all runs use sbatch requesting 36 threads and 180gb of memory
+> For all runs use sbatch requesting 36 threads and 180gb of memory.
 
-> For all software mentioned below, use conda to install
+> For all software mentioned below, use conda to install.
+
+> You can inquire the path to one of your conda environments by typing `conda info --envs`
 
 
