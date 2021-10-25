@@ -22,11 +22,13 @@ Use quast to calculate the assembly statistics of each bin, and to estimate the 
 > How many bins contain at least one rRNA genes? How many contain all rRNA genes (5S rRNA, 16S rRNA and 23S rRNA)? Recover all 16S rRNA gene sequences, add them to a file called `qual_bins_16S.fasta`. Make a directory called `sequences` and upload the file.
 
 
+
+
 ______________________________________________________________________________________________________________________________________________________________
 ## For successful completion of your homework, your Github repo should contain:
 - an upadated README file with answers to the questions
 - a directory called `tables` that contains the tables: checkm_report.txt, report.tsv, gtdb summary ,  prokka *tsv 
-- - a directory called `sequences` that contains the file: qual_bins_16S.fasta
+- a directory called `sequences` that contains the file: qual_bins_16S.fasta
 - a directory called `scripts` that contains the sbatch scripts: megahit.qsub, binning.qsub, quast.qsub, checkm.qsub, gtdb.qsub, prokka.qsub
 
 
