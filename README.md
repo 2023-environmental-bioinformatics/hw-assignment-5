@@ -15,7 +15,7 @@ Use quast to calculate the assembly statistics of each bin. Upload the sbatch sc
 
 ## Taxonomic annotation
 Install [GTDB-tk](https://ecogenomics.github.io/GTDBTk/index.html) **version 1.3** to assign taxonomy to the bins (*Note: during the installation of GTDB-tk, please do NOT download the GTDB. Modify the `gtdbtk.sh`file that is inside your gtdb environment `etc/conda/activate.d/` to modify the database path. Use `/vortexfs1/omics/env-bio/collaboration/databases/release95`. Due to the size of the GTDB-tk, you will be reaching the memomy limitations of the compute nodes. Reduce pplacer threads to 2*). Upload the summary tables on your `tables` directory and the `gtdb.qsub` script on the `script` folder.
-> How many bacterial and how many archaeal M/H Q genomes did you recover? Which phylum was the most abundant?
+> How many of the bins belong to Archaea and how many to Bacteria? Which phylum is the most abundant?
 
 ## Functional annotation
 - Use [prokka](https://github.com/tseemann/prokka) to functionally annotate the bins. Upload the script (`prokka.qsub`). Upload all the tsv tables to the repo.
