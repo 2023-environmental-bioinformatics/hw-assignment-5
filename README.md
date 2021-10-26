@@ -46,4 +46,6 @@ ________________________________________________________________________________
 
 > You can inquire the path to one of your conda environments by typing `conda info --envs`
 
+> After the completion of this homework, please delete any large files (sra, fastq etc).
+
 
