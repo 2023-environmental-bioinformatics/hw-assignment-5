@@ -1,4 +1,4 @@
-# HW3 binning
+# HW5 binning
 
 ## Co-assembly and binning
 For this assignement you will going to use [Metabat2](https://peerj.com/articles/7359/) to reconstruct genomes out of the metagenomes. 
