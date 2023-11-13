@@ -14,7 +14,15 @@ For this assignement you will going to use [Metabat2](https://peerj.com/articles
 Use quast to calculate the assembly statistics of each bin. Upload the sbatch script (`quast.qsub`) and the quast report table `report.tsv` in the directories `scripts` and `tables`, respectively.  
 
 ## Taxonomic annotation
-Install [GTDB-tk](https://ecogenomics.github.io/GTDBTk/index.html) **version 2.1.1** using mamba to assign taxonomy to the bins you created. See detailed instructions [here](https://ecogenomics.github.io/GTDBTk/installing/bioconda.html). During the installation of GTDB-tk, please **do NOT download the GTDB database**. After you activate your mamba gtdbtk environment use `conda env config vars set GTDBTK_DATA_PATH="/proj/omics/env-bio/collaboration/databases/gtdbtk-2.1.1/db/"` to set up your database path. You also need to execute (inside your gtdbtk-2.1.1 environment) `install -c conda-forge numpy=1.23.1`.
+Install [GTDB-tk](https://ecogenomics.github.io/GTDBTk/index.html) **version 2.1.1** using mamba to assign taxonomy to the bins you created. See detailed instructions [here](https://ecogenomics.github.io/GTDBTk/installing/bioconda.html). During the installation of GTDB-tk, please **do NOT download the GTDB database**. After you activate your mamba gtdbtk environment use 
+```
+conda env config vars set GTDBTK_DATA_PATH="/proj/omics/env-bio/collaboration/databases/gtdbtk-2.1.1/db/"
+```
+to set up your database path. 
+You also need to downgrade your numpy (inside your gtdbtk-2.1.1 environment) to fix a bug by executing
+```
+mamba install -c conda-forge numpy=1.23.1
+```
 
 Due to the size of the GTDB-tk, you will be reaching the memomy limitations of the compute nodes. To address this issue, eeduce pplacer threads to 2 (check the help menu to figure out how). Upload the summary tables on your `tables` directory and the `gtdb.qsub` script on the `script` folder.
 
