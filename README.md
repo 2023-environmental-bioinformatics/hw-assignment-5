@@ -2,7 +2,7 @@
 
 ## Co-assembly and binning
 For this assignement you will going to use [Metabat2](https://peerj.com/articles/7359/) to reconstruct genomes out of the metagenomes. 
-- First, you are going to co-assemble the three metagenomes you have used for your previous assignment, ERR598970, ERR598972 and ERR599021 using `megahit`. Make a directory called `scripts` on your repo and upload your sbatch script (*name the script `megahit.qsub`*).
+- First, you are going to **co-assemble** the three metagenomes you have used for your previous assignment, ERR598970, ERR598972 and ERR599021 using `megahit`. Make a directory called `scripts` on your repo and upload your sbatch script (*name the script `megahit.qsub`*).
 
 - Before using [Metabat2](https://bitbucket.org/berkeleylab/metabat/src/master/), you will have to map the reads back to the assembly using [`bwa mem`](http://bio-bwa.sourceforge.net). Sort the files using `samtools`. Use Metabat2 to reconstruct bins (*Note: adjust the parameters "Minimum size of a contig for binning" to 1500 and the "maximum number of edges per node" to 100*). Upload the sbatch script that contains all the commands for mapping, sorting and binning on your `script` folder (*named `binning.qsub`*).
 
@@ -14,7 +14,7 @@ For this assignement you will going to use [Metabat2](https://peerj.com/articles
 Use quast to calculate the assembly statistics of each bin. Upload the sbatch script (`quast.qsub`) and the quast report table `report.tsv` in the directories `scripts` and `tables`, respectively.  
 
 ## Taxonomic annotation
-Install [GTDB-tk](https://ecogenomics.github.io/GTDBTk/index.html) **version 1.3** to assign taxonomy to the bins (*Note: during the installation of GTDB-tk, please do NOT download the GTDB. Modify the `gtdbtk.sh`file that is inside your gtdb environment `etc/conda/activate.d/` to modify the database path. Use `/vortexfs1/omics/env-bio/collaboration/databases/release95`. Due to the size of the GTDB-tk, you will be reaching the memomy limitations of the compute nodes. Reduce pplacer threads to 2*). Upload the summary tables on your `tables` directory and the `gtdb.qsub` script on the `script` folder.
+Install [GTDB-tk](https://ecogenomics.github.io/GTDBTk/index.html) **version 2.1.1** using mamba (see detailed instructions [here](https://ecogenomics.github.io/GTDBTk/installing/bioconda.html) to assign taxonomy to the bins (*Note: during the installation of GTDB-tk, please **do NOT download the GTDB database** us. After you activate your mamba gtdbtk environment use `conda env config vars set GTDBTK_DATA_PATH="/proj/omics/env-bio/collaboration/databases/gtdbtk-2.1.1/db/"` to set up your database path. Due to the size of the GTDB-tk, you will be reaching the memomy limitations of the compute nodes. Reduce pplacer threads to 2*). Upload the summary tables on your `tables` directory and the `gtdb.qsub` script on the `script` folder.
 > How many of the bins belong to Archaea and how many to Bacteria? Which phylum is the most abundant?
 
 ## Functional annotation
