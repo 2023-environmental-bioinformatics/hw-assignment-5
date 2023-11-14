@@ -7,7 +7,7 @@ For this assignement you will going to use [Metabat2](https://peerj.com/articles
 - Before using [Metabat2](https://bitbucket.org/berkeleylab/metabat/src/master/), you will have to map the reads back to the assembly using [`bwa mem`](http://bio-bwa.sourceforge.net). Sort the files using `samtools`. Use Metabat2 to reconstruct bins (*Note: adjust the parameters "Minimum size of a contig for binning" to 1500 and the "maximum number of edges per node" to 100*). Upload the sbatch script that contains all the commands for mapping, sorting and binning on your `script` folder (*named `binning.qsub`*).
 
 ## Quality assessment
-- Use [CheckM2](https://github.com/Ecogenomics/CheckM/wiki) to estimate the completeness and the contamination of the bins. To install CheckM2, use:
+- Use [CheckM2](https://github.com/Ecogenomics/CheckM/wiki](https://www.nature.com/articles/s41592-023-01940-w)) to estimate the completeness and the contamination of the bins. To install CheckM2, use:
  ```
   mamba create -n checkm2_class -c bioconda -c conda-forge checkm2 'python>=3.7, <3.9'
   ```
