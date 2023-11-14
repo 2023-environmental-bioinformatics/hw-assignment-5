@@ -7,11 +7,20 @@ For this assignement you will going to use [Metabat2](https://peerj.com/articles
 - Before using [Metabat2](https://bitbucket.org/berkeleylab/metabat/src/master/), you will have to map the reads back to the assembly using [`bwa mem`](http://bio-bwa.sourceforge.net). Sort the files using `samtools`. Use Metabat2 to reconstruct bins (*Note: adjust the parameters "Minimum size of a contig for binning" to 1500 and the "maximum number of edges per node" to 100*). Upload the sbatch script that contains all the commands for mapping, sorting and binning on your `script` folder (*named `binning.qsub`*).
 
 ## Quality assessment
-- Use [CheckM](https://github.com/Ecogenomics/CheckM/wiki) to estimate the completeness and the contamination of the bins (*Hint: use the checkm lineage_wf workflow and export results as a table format. Note: set `--pplacer_threads` to 2*). Make a directory called `tables` on your repo and upload the table (*name the table `checkm_report.txt`*). Upload the sbatch script that contains all the command on your `script` folder (`checkm.qsub`).
->How many genomes are considered high quality and how many medium quality according to the community standards proposed by [Bowers et al. 2017](https://www.nature.com/articles/nbt.3893)? (*Note: from the completeness and contanination estimates you might not be able to fully answer this question. You can report how many of the genomes can be **putatively** characterized as high quality. After functional annotation, you will be able to fully answer the question).
+- Use [CheckM2](https://github.com/Ecogenomics/CheckM/wiki) to estimate the completeness and the contamination of the bins. To install CheckM2, use:
+ ```
+  mamba create -n checkm2_class -c bioconda -c conda-forge checkm2 'python>=3.7, <3.9'
+  ```
+and then link the existing database by executing:
+```
+export CHECKM2DB=/proj/omics/env-bio/collaboration/databases/DIAMOND/CheckM2_database/uniref100.KO.1.dmnd
+```
+
+Use the `checkm2 predict` help menu to run the command in the mode that reduces RAM usage. Make a directory called `tables` on your repo and upload the results table (named as `checkm2_quality_report.tsv`. Upload the sbatch script that contains all the command on your `script` folder (`checkm2.qsub`).
+>How many genomes are considered high quality and how many medium quality according to the community standards proposed by [Bowers et al. 2017](https://www.nature.com/articles/nbt.3893)? (*Note: from the completeness and contanination estimates you might not be able to fully answer this question. You can report how many of the genomes can be **putatively** characterized as high quality. After performing the functional annotation (below), you will be able to fully answer the question).
 
 - **For the rest of tasks you will only work with the medium and high quality bins (M/H Q).** Make a folder called `qual_bins` and upload all M/H Q genomes.
-Use quast to calculate the assembly statistics of each bin. Upload the sbatch script (`quast.qsub`) and the quast report table `report.tsv` in the directories `scripts` and `tables`, respectively.  
+Use quast to calculate the assembly statistics of each bin. Upload the sbatch script (`quast.qsub`) and the quast report table `quast_report.tsv` in the directories `scripts` and `tables`, respectively.  
 
 ## Taxonomic annotation
 Install [GTDB-tk](https://ecogenomics.github.io/GTDBTk/index.html) **version 2.1.1** using mamba to assign taxonomy to the bins you created. See detailed instructions [here](https://ecogenomics.github.io/GTDBTk/installing/bioconda.html). During the installation of GTDB-tk, please **do NOT download the GTDB database**. After you activate your mamba gtdbtk environment use 
@@ -24,7 +33,7 @@ You also need to downgrade your numpy (inside your gtdbtk-2.1.1 environment) to 
 mamba install -c conda-forge numpy=1.23.1
 ```
 
-Due to the size of the GTDB-tk, you will be reaching the memomy limitations of the compute nodes. To address this issue, eeduce pplacer threads to 2 (check the help menu to figure out how). Upload the summary tables on your `tables` directory and the `gtdb.qsub` script on the `script` folder.
+Due to the size of the GTDB-tk, you will be reaching the memomy limitations of the compute nodes. To address this issue, reduce pplacer threads to 2 (check the help menu to figure out how). Combine the summary tables (if more that one) and upload onto your `tables` directory. Similarly upload the `gtdb.qsub` script on the `script` folder.
 
 > How many of the bins belong to Archaea and how many to Bacteria? Which phylum is the most abundant?
 
@@ -40,7 +49,7 @@ Due to the size of the GTDB-tk, you will be reaching the memomy limitations of t
 ______________________________________________________________________________________________________________________________________________________________
 ## For successful completion of your homework, your Github repo should contain:
 - an upadated README file with answers to the questions
-- a directory called `tables` that contains the tables: checkm_report.txt, report.tsv, gtdb summary ,  prokka *tsv 
+- a directory called `tables` that contains the tables: checkm2_quality_report.tsv, quast_report.tsv, gtdb_summary ,  prokka *tsv 
 - a directory called `sequences` that contains the file: qual_bins_16S.fasta
 - a directory called `scripts` that contains the sbatch scripts: megahit.qsub, binning.qsub, quast.qsub, checkm.qsub, gtdb.qsub, prokka.qsub
 
